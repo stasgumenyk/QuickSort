@@ -18,10 +18,11 @@ public class SortUtils {
     private static void doSort(int[] array, int start, int end) {
             if(end > start){
 
-                int pivot = array[start];
+                int pivot = array[start];//опорний елемент; в даному варіанті реалізації - перший елемент масиву.
                 int i = start+1;
                 int tmp;
 
+                //поділ масиву
                 for(int j = start+1; j<= end; j++){
                     if(pivot > array[j]){
                         tmp = array[j];
@@ -32,9 +33,11 @@ public class SortUtils {
                     }
                 }
 
+                //переносимо опорний елемент вправо
                 array[start] = array[i-1];
                 array[i-1] = pivot;
 
+                //рекурсивно викликаємо метод для елементів справа і зліва від опорного
                 doSort(array, start, i-2);
                 doSort(array, i, end);
             }
